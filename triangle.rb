@@ -15,6 +15,20 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+  hyp, s1, s2 = if c > a || c > b
+            [c,a,b]
+          elsif b > a || b > c
+            [b,a,c]
+          else
+            [a,b,c]
+          end
+
+  if a <= 0 || b <= 0 || c <= 0
+    raise TriangleError
+  elsif s1 + s2 <= hyp
+    raise TriangleError
+  end
+
   if a == b && b == c
     :equilateral
   elsif a == b || b == c || a == c
@@ -25,5 +39,5 @@ def triangle(a, b, c)
 end
 
 # Error class used in part 2.  No need to change this code.
-class TriangleError < StandardError 
+class TriangleError < StandardError
 end
